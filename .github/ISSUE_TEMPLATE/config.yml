@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: SHDL Discussions
+    url: https://github.com/mvb0005/SHDL/discussions
+    about: Please use discussions for questions and general help
+  - name: Slippi Community
+    url: https://slippi.gg/
+    about: For general Slippi-related questions and support
