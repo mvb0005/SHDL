@@ -1,0 +1,5 @@
+games/*
+parsedgames/*
+
+# ignore build artifacts folders
+*/target/

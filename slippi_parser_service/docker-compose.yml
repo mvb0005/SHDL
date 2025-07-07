@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  duckdb:
+    image: duckdb/duckdb:latest
+    container_name: slippi_duckdb
+    volumes:
+      - ./data:/data
+      - ../parsedgames:/parsedgames:ro
+      - ./sql:/sql
+    working_dir: /data
+    command: duckdb slippi.db
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"  # For potential web interface
+    environment:
+      - DUCKDB_DATABASE=/data/slippi.db 
