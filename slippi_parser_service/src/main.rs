@@ -85,6 +85,27 @@ async fn parse_slippi_file(file_path: &PathBuf) -> Result<GameData> {
     
     info!("Successfully parsed Slippi replay");
     
+    // Debug: examine frame structure
+    info!("Frame count: {}", game.frames.len());
+    
+    // Get first frame to examine structure
+    if let Some(first_frame) = game.frames.get(0) {
+        info!("Examining first frame structure...");
+        info!("Frame has {} ports", first_frame.ports.len());
+        
+        for (port_idx, port) in first_frame.ports.iter().enumerate() {
+            if let Some(port_data) = port {
+                info!("Port {} has data available", port_idx);
+                
+                // Look at leader data (main character)
+                if let Some(leader) = &port_data.leader {
+                    info!("Port {} leader action state: {:?}", port_idx, leader.action_state);
+                    info!("Port {} leader buttons: {:?}", port_idx, leader.buttons);
+                }
+            }
+        }
+    }
+    
     // Extract basic game information
     let game_data = GameData {
         player_count: game.start.players.len(),
