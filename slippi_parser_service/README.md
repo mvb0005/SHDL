@@ -7,8 +7,10 @@ A fast, high-performance Slippi replay file parser built in Rust using the `pepp
 - **Fast parsing**: Built in Rust for maximum performance
 - **Multiple output formats**: JSON and text output
 - **Comprehensive data extraction**: Player info, stage, frame count, and more
+- **Move extraction**: Extract and count individual moves from frame data
 - **Command-line interface**: Easy to use CLI with argument parsing
 - **Batch processing**: Recursive directory processing script
+- **Statistical analysis**: Aggregated move statistics across multiple games
 
 ## Installation
 
@@ -26,6 +28,34 @@ A fast, high-performance Slippi replay file parser built in Rust using the `pepp
 Parse a Slippi replay file and output as JSON:
 ```bash
 ./target/release/slippi_parser_service -f path/to/your/game.slp
+```
+
+### Move Extraction
+
+Extract moves from a Slippi replay file:
+```bash
+./target/release/slippi_parser_service -f game.slp --extract-moves
+```
+
+### Directory Processing
+
+Process multiple JSON files for aggregated move statistics:
+```bash
+./target/release/slippi_parser_service --process-directory -f parsedgames/
+```
+
+### Move Analysis Tool
+
+Use the dedicated move analyzer for comprehensive statistics:
+```bash
+# Text format with detailed breakdown
+./target/release/move_analyzer -d parsedgames/ --format text
+
+# CSV format for data analysis
+./target/release/move_analyzer -d parsedgames/ --format csv
+
+# Save results to file
+./target/release/move_analyzer -d parsedgames/ --format json -o results.json
 ```
 
 ### Output Formats
